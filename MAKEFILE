@@ -1,0 +1,23 @@
+# Makefile for Hello World!
+ASM = kbd.asm
+OBJ = kbd.obj
+MAP = kbd.map
+COM = kbd.com
+
+# Tools
+TASM = tasm /zi
+TLINK = tlink /t
+
+# Build rules
+all: $(COM)
+
+$(COM): $(OBJ)
+    $(TLINK) $(OBJ)
+
+$(OBJ): $(ASM)
+    $(TASM) $(ASM)
+
+clean:
+    del $(OBJ)
+    del $(MAP)
+    del $(COM)

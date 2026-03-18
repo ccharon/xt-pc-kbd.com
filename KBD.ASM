@@ -36,14 +36,14 @@ scan_map_state_no_modifier LABEL WORD
     ; um 5 Worte verschoben; die ersten 5 Eintraege sind also der "caps-empfindliche"
     ; Bereich fuer Umlaute und Y/Z.
 
-    dw 2884h ; match 28h '„'  -> emit 84h '„'
-    dw 2794h ; match 27h '”'  -> emit 94h '”'
-    dw 1A81h ; match 1Ah ''  -> emit 81h ''
+    dw 2884h ; match 28h 'Ã¤'  -> emit 84h 'Ã¤'
+    dw 2794h ; match 27h 'Ã¶'  -> emit 94h 'Ã¶'
+    dw 1A81h ; match 1Ah 'Ã¼'  -> emit 81h 'Ã¼'
     dw 2C79h ; match 2Ch 'y'  -> emit 79h 'y'
     dw 157Ah ; match 15h 'z'  -> emit 7Ah 'z'
     dw 295Eh ; match 29h '^'  -> emit 5Eh '^'
-    dw 0CE1h ; match 0Ch 'á'  -> emit E1h 'á'
-    dw 0D27h ; match 0Dh 'ï'  -> emit 27h '''
+    dw 0CE1h ; match 0Ch 'ÃŸ'  -> emit E1h 'ÃŸ'
+    dw 0D27h ; match 0Dh 'Â´'  -> emit 27h '''
     dw 2B23h ; match 2Bh '#'  -> emit 23h '#'
     dw 1B2Bh ; match 1Bh '+'  -> emit 2Bh '+'
     dw 352Dh ; match 35h '-'  -> emit 2Dh '-'
@@ -54,30 +54,30 @@ scan_map_state_shift LABEL WORD
     ; aus state 0. Zusammen mit dem Caps-Lock-Offset ergibt das die Umkehrlogik
     ; fuer Shift+Caps bei Y/Z/Umlauten.
 
-    dw 288Eh ; match 28h 'Ž'  -> emit 8Eh 'Ž'
-    dw 2799h ; match 27h '™'  -> emit 99h '™'
-    dw 1A9Ah ; match 1Ah 'š'  -> emit 9Ah 'š'
+    dw 288Eh ; match 28h 'Ã„'  -> emit 8Eh 'Ã„'
+    dw 2799h ; match 27h 'Ã–'  -> emit 99h 'Ã–'
+    dw 1A9Ah ; match 1Ah 'Ãœ'  -> emit 9Ah 'Ãœ'
     dw 2C59h ; match 2Ch 'Y'  -> emit 59h 'Y'
     dw 155Ah ; match 15h 'Z'  -> emit 5Ah 'Z'
-    dw 29F8h ; match 29h '^'  -> emit F8h 'ø'
+    dw 29F8h ; match 29h '^'  -> emit F8h 'Â°'
     dw 0322h ; match 03h '2'  -> emit 22h '"'
-    dw 0415h ; match 04h '3'  -> emit 15h 'õ'
+    dw 0415h ; match 04h '3'  -> emit 15h 'Â§'
     dw 0726h ; match 07h '6'  -> emit 26h '&'
     dw 082Fh ; match 08h '7'  -> emit 2Fh '/'
     dw 0928h ; match 09h '8'  -> emit 28h '('
     dw 0A29h ; match 0Ah '9'  -> emit 29h ')'
     dw 0B3Dh ; match 0Bh '0'  -> emit 3Dh '='
-    dw 0C3Fh ; match 0Ch 'á'  -> emit 3Fh '?'
-    dw 0D60h ; match 0Dh 'ï'  -> emit 60h '`'
+    dw 0C3Fh ; match 0Ch 'ÃŸ'  -> emit 3Fh '?'
+    dw 0D60h ; match 0Dh 'Â´'  -> emit 60h '`'
     dw 2B27h ; match 2Bh '#'  -> emit 27h '''
     dw 1B2Ah ; match 1Bh '+'  -> emit 2Ah '*'
     dw 333Bh ; match 33h ','  -> emit 3Bh ';'
     dw 343Ah ; match 34h '.'  -> emit 3Ah ':'
     dw 355Fh ; match 35h '-'  -> emit 5Fh '_'
     dw 563Eh ; match 56h '<'  -> emit 3Eh '>'
-    dw 2884h ; match 28h 'Ž'  -> emit 84h '„'  ; Caps+Shift-Rueckfall
-    dw 2794h ; match 27h '™'  -> emit 94h '”'  ; Caps+Shift-Rueckfall
-    dw 1A81h ; match 1Ah 'š'  -> emit 81h ''  ; Caps+Shift-Rueckfall
+    dw 2884h ; match 28h 'Ã„'  -> emit 84h 'Ã¤'  ; Caps+Shift-Rueckfall
+    dw 2794h ; match 27h 'Ã–'  -> emit 94h 'Ã¶'  ; Caps+Shift-Rueckfall
+    dw 1A81h ; match 1Ah 'Ãœ'  -> emit 81h 'Ã¼'  ; Caps+Shift-Rueckfall
     dw 2C79h ; match 2Ch 'Y'  -> emit 79h 'y'  ; Caps+Shift-Rueckfall
     dw 157Ah ; match 15h 'Z'  -> emit 7Ah 'z'  ; Caps+Shift-Rueckfall
 
@@ -98,54 +98,54 @@ scan_map_state_ctrl_shift LABEL WORD
     dw 2C19h ; match 2Ch 'Y'  -> emit 19h ^Y
     dw 151Ah ; match 15h 'Z'  -> emit 1Ah ^Z
     dw 1E61h ; match 1Eh 'A'  -> emit 61h 'a'
-    dw 30E1h ; match 30h 'B'  -> emit E1h 'á'
+    dw 30E1h ; match 30h 'B'  -> emit E1h 'ÃŸ'
     dw 2E72h ; match 2Eh 'C'  -> emit 72h 'r'
     dw 2247h ; match 22h 'G'  -> emit 47h 'G'
-    dw 20EBh ; match 20h 'D'  -> emit EBh '‰'
-    dw 19E3h ; match 19h 'P'  -> emit E3h 'Æ'
+    dw 20EBh ; match 20h 'D'  -> emit EBh 'Ã«'
+    dw 19E3h ; match 19h 'P'  -> emit E3h 'Ã£'
     dw 1F73h ; match 1Fh 'S'  -> emit 73h 's'
-    dw 32E6h ; match 32h 'M'  -> emit E6h 'æ'
-    dw 18EAh ; match 18h 'O'  -> emit EAh 'ˆ'
-    dw 21EDh ; match 21h 'F'  -> emit EDh 'í'
+    dw 32E6h ; match 32h 'M'  -> emit E6h 'Âµ'
+    dw 18EAh ; match 18h 'O'  -> emit EAh 'Ãª'
+    dw 21EDh ; match 21h 'F'  -> emit EDh 'Ã'
     dw 1245h ; match 12h 'E'  -> emit 45h 'E'
     dw 1430h ; match 14h 'T'  -> emit 30h '0'
-    dw 10FBh ; match 10h 'Q'  -> emit FBh 'û'
+    dw 10FBh ; match 10h 'Q'  -> emit FBh 'Â¹'
 
 scan_map_state_alt_ctrl LABEL WORD
     ; Auf XT entspricht das praktisch der AltGr-Ebene.
 
-    dw 1EA0h ; match 1Eh 'a'  -> emit A0h ' '
-    dw 1282h ; match 12h 'e'  -> emit 82h '‚'
-    dw 17A1h ; match 17h 'i'  -> emit A1h '¡'
-    dw 18A2h ; match 18h 'o'  -> emit A2h '¢'
-    dw 16A3h ; match 16h 'u'  -> emit A3h '£'
-    dw 03FDh ; match 03h '2'  -> emit FDh 'ý'
-    dw 04FCh ; match 04h '3'  -> emit FCh 'ü'
+    dw 1EA0h ; match 1Eh 'a'  -> emit A0h 'Ã¡'
+    dw 1282h ; match 12h 'e'  -> emit 82h 'Ã©'
+    dw 17A1h ; match 17h 'i'  -> emit A1h 'Ã­'
+    dw 18A2h ; match 18h 'o'  -> emit A2h 'Ã³'
+    dw 16A3h ; match 16h 'u'  -> emit A3h 'Ãº'
+    dw 03FDh ; match 03h '2'  -> emit FDh 'Â²'
+    dw 04FCh ; match 04h '3'  -> emit FCh 'Â³'
     dw 1040h ; match 10h 'q'  -> emit 40h '@'
     dw 087Bh ; match 08h '7'  -> emit 7Bh '{'
     dw 095Bh ; match 09h '8'  -> emit 5Bh '['
     dw 0A5Dh ; match 0Ah '9'  -> emit 5Dh ']'
     dw 0B7Dh ; match 0Bh '0'  -> emit 7Dh '}'
-    dw 0C5Ch ; match 0Ch 'á'  -> emit 5Ch '\'
+    dw 0C5Ch ; match 0Ch 'ÃŸ'  -> emit 5Ch '\'
     dw 1B7Eh ; match 1Bh '+'  -> emit 7Eh '~'
     dw 567Ch ; match 56h '<'  -> emit 7Ch '|'
-    dw 32E6h ; match 32h 'm'  -> emit E6h 'æ'
+    dw 32E6h ; match 32h 'm'  -> emit E6h 'Âµ'
 
 scan_map_state_alt_shift LABEL WORD
-    dw 1E85h ; match 1Eh 'A'  -> emit 85h '…'
-    dw 128Ah ; match 12h 'E'  -> emit 8Ah 'Š'
-    dw 178Dh ; match 17h 'I'  -> emit 8Dh ''
-    dw 1895h ; match 18h 'O'  -> emit 95h '•'
-    dw 1697h ; match 16h 'U'  -> emit 97h '—'
-    dw 03F9h ; match 03h '2'  -> emit F9h 'ù'
-    dw 05F9h ; match 05h '4'  -> emit F9h 'ù'
+    dw 1E85h ; match 1Eh 'A'  -> emit 85h 'Ã '
+    dw 128Ah ; match 12h 'E'  -> emit 8Ah 'Ã¨'
+    dw 178Dh ; match 17h 'I'  -> emit 8Dh 'Ã¬'
+    dw 1895h ; match 18h 'O'  -> emit 95h 'Ã²'
+    dw 1697h ; match 16h 'U'  -> emit 97h 'Ã¹'
+    dw 03F9h ; match 03h '2'  -> emit F9h 'Â¨'
+    dw 05F9h ; match 05h '4'  -> emit F9h 'Â¨'
 
 scan_map_state_alt_ctrl_shift LABEL WORD
-    dw 1E83h ; match 1Eh 'A'  -> emit 83h 'ƒ'
-    dw 1288h ; match 12h 'E'  -> emit 88h 'ˆ'
-    dw 178Ch ; match 17h 'I'  -> emit 8Ch 'Œ'
-    dw 1893h ; match 18h 'O'  -> emit 93h '“'
-    dw 1696h ; match 16h 'U'  -> emit 96h '–'
+    dw 1E83h ; match 1Eh 'A'  -> emit 83h 'Ã¢'
+    dw 1288h ; match 12h 'E'  -> emit 88h 'Ãª'
+    dw 178Ch ; match 17h 'I'  -> emit 8Ch 'Ã®'
+    dw 1893h ; match 18h 'O'  -> emit 93h 'Ã´'
+    dw 1696h ; match 16h 'U'  -> emit 96h 'Ã»'
 
 special_scan_map_prefix LABEL WORD
     ; Sondertabelle fuer Prefix-/Extended-Faelle

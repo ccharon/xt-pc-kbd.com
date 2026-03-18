@@ -36,116 +36,119 @@ scan_map_state_no_modifier LABEL WORD
     ; um 5 Worte verschoben; die ersten 5 Eintraege sind also der "caps-empfindliche"
     ; Bereich fuer Umlaute und Y/Z.
 
-    dw 2884h ; match 28h 'ä'  -> emit 84h 'ä'
-    dw 2794h ; match 27h 'ö'  -> emit 94h 'ö'
-    dw 1A81h ; match 1Ah 'ü'  -> emit 81h 'ü'
-    dw 2C79h ; match 2Ch 'y'  -> emit 79h 'y'
-    dw 157Ah ; match 15h 'z'  -> emit 7Ah 'z'
-    dw 295Eh ; match 29h '^'  -> emit 5Eh '^'
-    dw 0CE1h ; match 0Ch 'ß'  -> emit E1h 'ß'
-    dw 0D27h ; match 0Dh '´'  -> emit 27h '''
-    dw 2B23h ; match 2Bh '#'  -> emit 23h '#'
-    dw 1B2Bh ; match 1Bh '+'  -> emit 2Bh '+'
-    dw 352Dh ; match 35h '-'  -> emit 2Dh '-'
-    dw 563Ch ; match 56h '<'  -> emit 3Ch '<'
+    dw 2884h ; match sc 28h (AE key)     -> emit 84h 'ä'
+    dw 2794h ; match sc 27h (OE key)     -> emit 94h 'ö'
+    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'ü'
+    dw 2C79h ; match sc 2Ch (Y key)      -> emit 79h 'y'
+    dw 157Ah ; match sc 15h (Z key)      -> emit 7Ah 'z'
+    dw 295Eh ; match sc 29h (^ key)      -> emit 5Eh '^'
+    dw 0CE1h ; match sc 0Ch (SZ key)     -> emit E1h 'ß'
+    dw 0D27h ; match sc 0Dh (accent key) -> emit 27h '''
+    dw 2B23h ; match sc 2Bh (# key)      -> emit 23h '#'
+    dw 1B2Bh ; match sc 1Bh (+ key)      -> emit 2Bh '+'
+    dw 352Dh ; match sc 35h (- key)      -> emit 2Dh '-'
+    dw 563Ch ; match sc 56h (<> key)     -> emit 3Ch '<'
 
 scan_map_state_shift LABEL WORD
     ; Die letzten 5 Eintraege sind absichtlich die Kleinbuchstaben-/Umlautwerte
     ; aus state 0. Zusammen mit dem Caps-Lock-Offset ergibt das die Umkehrlogik
     ; fuer Shift+Caps bei Y/Z/Umlauten.
 
-    dw 288Eh ; match 28h 'Ä'  -> emit 8Eh 'Ä'
-    dw 2799h ; match 27h 'Ö'  -> emit 99h 'Ö'
-    dw 1A9Ah ; match 1Ah 'Ü'  -> emit 9Ah 'Ü'
-    dw 2C59h ; match 2Ch 'Y'  -> emit 59h 'Y'
-    dw 155Ah ; match 15h 'Z'  -> emit 5Ah 'Z'
-    dw 29F8h ; match 29h '^'  -> emit F8h '°'
-    dw 0322h ; match 03h '2'  -> emit 22h '"'
-    dw 0415h ; match 04h '3'  -> emit 15h '§'
-    dw 0726h ; match 07h '6'  -> emit 26h '&'
-    dw 082Fh ; match 08h '7'  -> emit 2Fh '/'
-    dw 0928h ; match 09h '8'  -> emit 28h '('
-    dw 0A29h ; match 0Ah '9'  -> emit 29h ')'
-    dw 0B3Dh ; match 0Bh '0'  -> emit 3Dh '='
-    dw 0C3Fh ; match 0Ch 'ß'  -> emit 3Fh '?'
-    dw 0D60h ; match 0Dh '´'  -> emit 60h '`'
-    dw 2B27h ; match 2Bh '#'  -> emit 27h '''
-    dw 1B2Ah ; match 1Bh '+'  -> emit 2Ah '*'
-    dw 333Bh ; match 33h ','  -> emit 3Bh ';'
-    dw 343Ah ; match 34h '.'  -> emit 3Ah ':'
-    dw 355Fh ; match 35h '-'  -> emit 5Fh '_'
-    dw 563Eh ; match 56h '<'  -> emit 3Eh '>'
-    dw 2884h ; match 28h 'Ä'  -> emit 84h 'ä'  ; Caps+Shift-Rueckfall
-    dw 2794h ; match 27h 'Ö'  -> emit 94h 'ö'  ; Caps+Shift-Rueckfall
-    dw 1A81h ; match 1Ah 'Ü'  -> emit 81h 'ü'  ; Caps+Shift-Rueckfall
-    dw 2C79h ; match 2Ch 'Y'  -> emit 79h 'y'  ; Caps+Shift-Rueckfall
-    dw 157Ah ; match 15h 'Z'  -> emit 7Ah 'z'  ; Caps+Shift-Rueckfall
+    dw 288Eh ; match sc 28h (AE key)     -> emit 8Eh 'Ä'
+    dw 2799h ; match sc 27h (OE key)     -> emit 99h 'Ö'
+    dw 1A9Ah ; match sc 1Ah (UE key)     -> emit 9Ah 'Ü'
+    dw 2C59h ; match sc 2Ch (Y key)      -> emit 59h 'Y'
+    dw 155Ah ; match sc 15h (Z key)      -> emit 5Ah 'Z'
+    dw 29F8h ; match sc 29h (^ key)      -> emit F8h '°'
+    dw 0322h ; match sc 03h (2 key)      -> emit 22h '"'
+    dw 0415h ; match sc 04h (3 key)      -> emit 15h '§'
+    dw 0726h ; match sc 07h (6 key)      -> emit 26h '&'
+    dw 082Fh ; match sc 08h (7 key)      -> emit 2Fh '/'
+    dw 0928h ; match sc 09h (8 key)      -> emit 28h '('
+    dw 0A29h ; match sc 0Ah (9 key)      -> emit 29h ')'
+    dw 0B3Dh ; match sc 0Bh (0 key)      -> emit 3Dh '='
+    dw 0C3Fh ; match sc 0Ch (SZ key)     -> emit 3Fh '?'
+    dw 0D60h ; match sc 0Dh (accent key) -> emit 60h '`'
+    dw 2B27h ; match sc 2Bh (# key)      -> emit 27h '''
+    dw 1B2Ah ; match sc 1Bh (+ key)      -> emit 2Ah '*'
+    dw 333Bh ; match sc 33h (, key)      -> emit 3Bh ';'
+    dw 343Ah ; match sc 34h (. key)      -> emit 3Ah ':'
+    dw 355Fh ; match sc 35h (- key)      -> emit 5Fh '_'
+    dw 563Eh ; match sc 56h (<> key)     -> emit 3Eh '>'
+    dw 2884h ; match sc 28h (AE key)     -> emit 84h 'ä' ; Caps+Shift-Rueckfall
+    dw 2794h ; match sc 27h (OE key)     -> emit 94h 'ö' ; Caps+Shift-Rueckfall
+    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'ü' ; Caps+Shift-Rueckfall
+    dw 2C79h ; match sc 2Ch (Y key)      -> emit 79h 'y' ; Caps+Shift-Rueckfall
+    dw 157Ah ; match sc 15h (Z key)      -> emit 7Ah 'z' ; Caps+Shift-Rueckfall
 
 scan_map_state_ctrl LABEL WORD
-    dw 2C19h ; match 2Ch 'y'  -> emit 19h ^Y
-    dw 151Ah ; match 15h 'z'  -> emit 1Ah ^Z
-    dw 351Fh ; match 35h '-'  -> emit 1Fh ^_
+    dw 2C19h ; match sc 2Ch (Y key)  -> emit 19h '^Y'
+    dw 151Ah ; match sc 15h (Z key)  -> emit 1Ah '^Z'
+    dw 351Fh ; match sc 35h (- key)  -> emit 1Fh '^_'
+
 
 scan_map_state_alt LABEL WORD
-    dw 082Bh ; match 08h '7'  -> emit 2Bh '+'
+    dw 082Bh ; match sc 08h (7 key)  -> emit 2Bh '+'
+
 
 scan_map_state_ctrl_shift LABEL WORD
-    ; Formal dieselbe Struktur wie alle anderen Haupttabellen.
-    ; Inhaltlich faellt diese Ebene aus dem sonstigen Muster heraus und sollte
-    ; deshalb neutral gelesen werden: das sind die tatsaechlich emittierten Bytes,
-    ; nicht notwendigerweise "klassische" Ctrl+Shift-Ergebnisse.
+    ; Diese Ebene emittiert direkt feste Bytes ohne klassisches Ctrl-Schema.
+    ; Verhalten ist nicht standardkonform und sollte rein beobachtend gelesen werden.
 
-    dw 2C19h ; match 2Ch 'Y'  -> emit 19h ^Y
-    dw 151Ah ; match 15h 'Z'  -> emit 1Ah ^Z
-    dw 1E61h ; match 1Eh 'A'  -> emit 61h 'a'
-    dw 30E1h ; match 30h 'B'  -> emit E1h 'ß'
-    dw 2E72h ; match 2Eh 'C'  -> emit 72h 'r'
-    dw 2247h ; match 22h 'G'  -> emit 47h 'G'
-    dw 20EBh ; match 20h 'D'  -> emit EBh 'ë'
-    dw 19E3h ; match 19h 'P'  -> emit E3h 'ã'
-    dw 1F73h ; match 1Fh 'S'  -> emit 73h 's'
-    dw 32E6h ; match 32h 'M'  -> emit E6h 'µ'
-    dw 18EAh ; match 18h 'O'  -> emit EAh 'ê'
-    dw 21EDh ; match 21h 'F'  -> emit EDh 'Ý'
-    dw 1245h ; match 12h 'E'  -> emit 45h 'E'
-    dw 1430h ; match 14h 'T'  -> emit 30h '0'
-    dw 10FBh ; match 10h 'Q'  -> emit FBh '¹'
+    dw 2C19h ; match sc 2Ch (Y key)  -> emit 19h '^Y'
+    dw 151Ah ; match sc 15h (Z key)  -> emit 1Ah '^Z'
+    dw 1E61h ; match sc 1Eh (A key)  -> emit 61h 'a'
+    dw 30E1h ; match sc 30h (B key)  -> emit E1h 'ß'
+    dw 2E72h ; match sc 2Eh (C key)  -> emit 72h 'r'
+    dw 2247h ; match sc 22h (G key)  -> emit 47h 'G'
+    dw 20EBh ; match sc 20h (D key)  -> emit EBh 'ë'
+    dw 19E3h ; match sc 19h (P key)  -> emit E3h 'ã'
+    dw 1F73h ; match sc 1Fh (S key)  -> emit 73h 's'
+    dw 32E6h ; match sc 32h (M key)  -> emit E6h 'µ'
+    dw 18EAh ; match sc 18h (O key)  -> emit EAh 'ê'
+    dw 21EDh ; match sc 21h (F key)  -> emit EDh 'Ý'
+    dw 1245h ; match sc 12h (E key)  -> emit 45h 'E'
+    dw 1430h ; match sc 14h (T key)  -> emit 30h '0'
+    dw 10FBh ; match sc 10h (Q key)  -> emit FBh '¹'
+
 
 scan_map_state_alt_ctrl LABEL WORD
-    ; Auf XT entspricht das praktisch der AltGr-Ebene.
+    ; Entspricht AltGr-Ebene (XT: Ctrl+Alt)
 
-    dw 1EA0h ; match 1Eh 'a'  -> emit A0h 'á'
-    dw 1282h ; match 12h 'e'  -> emit 82h 'é'
-    dw 17A1h ; match 17h 'i'  -> emit A1h 'í'
-    dw 18A2h ; match 18h 'o'  -> emit A2h 'ó'
-    dw 16A3h ; match 16h 'u'  -> emit A3h 'ú'
-    dw 03FDh ; match 03h '2'  -> emit FDh '²'
-    dw 04FCh ; match 04h '3'  -> emit FCh '³'
-    dw 1040h ; match 10h 'q'  -> emit 40h '@'
-    dw 087Bh ; match 08h '7'  -> emit 7Bh '{'
-    dw 095Bh ; match 09h '8'  -> emit 5Bh '['
-    dw 0A5Dh ; match 0Ah '9'  -> emit 5Dh ']'
-    dw 0B7Dh ; match 0Bh '0'  -> emit 7Dh '}'
-    dw 0C5Ch ; match 0Ch 'ß'  -> emit 5Ch '\'
-    dw 1B7Eh ; match 1Bh '+'  -> emit 7Eh '~'
-    dw 567Ch ; match 56h '<'  -> emit 7Ch '|'
-    dw 32E6h ; match 32h 'm'  -> emit E6h 'µ'
+    dw 1EA0h ; match sc 1Eh (A key)  -> emit A0h 'á'
+    dw 1282h ; match sc 12h (E key)  -> emit 82h 'é'
+    dw 17A1h ; match sc 17h (I key)  -> emit A1h 'í'
+    dw 18A2h ; match sc 18h (O key)  -> emit A2h 'ó'
+    dw 16A3h ; match sc 16h (U key)  -> emit A3h 'ú'
+    dw 03FDh ; match sc 03h (2 key)  -> emit FDh '²'
+    dw 04FCh ; match sc 04h (3 key)  -> emit FCh '³'
+    dw 1040h ; match sc 10h (Q key)  -> emit 40h '@'
+    dw 087Bh ; match sc 08h (7 key)  -> emit 7Bh '{'
+    dw 095Bh ; match sc 09h (8 key)  -> emit 5Bh '['
+    dw 0A5Dh ; match sc 0Ah (9 key)  -> emit 5Dh ']'
+    dw 0B7Dh ; match sc 0Bh (0 key)  -> emit 7Dh '}'
+    dw 0C5Ch ; match sc 0Ch (SZ key) -> emit 5Ch '\'
+    dw 1B7Eh ; match sc 1Bh (+ key)  -> emit 7Eh '~'
+    dw 567Ch ; match sc 56h (<> key) -> emit 7Ch '|'
+    dw 32E6h ; match sc 32h (M key)  -> emit E6h 'µ'
+
 
 scan_map_state_alt_shift LABEL WORD
-    dw 1E85h ; match 1Eh 'A'  -> emit 85h 'à'
-    dw 128Ah ; match 12h 'E'  -> emit 8Ah 'è'
-    dw 178Dh ; match 17h 'I'  -> emit 8Dh 'ì'
-    dw 1895h ; match 18h 'O'  -> emit 95h 'ò'
-    dw 1697h ; match 16h 'U'  -> emit 97h 'ù'
-    dw 03F9h ; match 03h '2'  -> emit F9h '¨'
-    dw 05F9h ; match 05h '4'  -> emit F9h '¨'
+    dw 1E85h ; match sc 1Eh (A key)  -> emit 85h 'à'
+    dw 128Ah ; match sc 12h (E key)  -> emit 8Ah 'è'
+    dw 178Dh ; match sc 17h (I key)  -> emit 8Dh 'ì'
+    dw 1895h ; match sc 18h (O key)  -> emit 95h 'ò'
+    dw 1697h ; match sc 16h (U key)  -> emit 97h 'ù'
+    dw 03F9h ; match sc 03h (2 key)  -> emit F9h '¨'
+    dw 05F9h ; match sc 05h (4 key)  -> emit F9h '¨'
+
 
 scan_map_state_alt_ctrl_shift LABEL WORD
-    dw 1E83h ; match 1Eh 'A'  -> emit 83h 'â'
-    dw 1288h ; match 12h 'E'  -> emit 88h 'ê'
-    dw 178Ch ; match 17h 'I'  -> emit 8Ch 'î'
-    dw 1893h ; match 18h 'O'  -> emit 93h 'ô'
-    dw 1696h ; match 16h 'U'  -> emit 96h 'û'
+    dw 1E83h ; match sc 1Eh (A key)  -> emit 83h 'â'
+    dw 1288h ; match sc 12h (E key)  -> emit 88h 'ê'
+    dw 178Ch ; match sc 17h (I key)  -> emit 8Ch 'î'
+    dw 1893h ; match sc 18h (O key)  -> emit 93h 'ô'
+    dw 1696h ; match sc 16h (U key)  -> emit 96h 'û'
 
 special_scan_map_prefix LABEL WORD
     ; Sondertabelle fuer Prefix-/Extended-Faelle

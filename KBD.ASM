@@ -309,6 +309,8 @@ int09_exit:
     pop ds
     iret ; 8088: IRET stellt IP/CS/FLAGS wieder her
 
+end_resident LABEL BYTE
+
 ; -----------------------------------------------------------------------------
 ; Routine: install_tsr
 ; Zweck:
@@ -343,7 +345,7 @@ install_tsr:
     int 21h ; AL=09h, DS:DX -> neuer Vektor
 
     ; resident bleiben (INT 27h TSR)
-    mov dx,0260h
+    mov dx,OFFSET end_resident
     int 27h ; CS:DX -> erstes freies Byte hinter residentem Teil
 
 resident_message:

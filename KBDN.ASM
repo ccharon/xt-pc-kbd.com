@@ -31,13 +31,13 @@ start:
 ; -----------------------------------------------------------------------------
 
 scan_map_state_no_modifier LABEL WORD
-    dw 2884h ; match sc 28h (AE key)     -> emit 84h '„'
-    dw 2794h ; match sc 27h (OE key)     -> emit 94h '”'
-    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h ''
+    dw 2884h ; match sc 28h (AE key)     -> emit 84h 'Ã¤'
+    dw 2794h ; match sc 27h (OE key)     -> emit 94h 'Ã¶'
+    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'Ã¼'
     dw 2C79h ; match sc 2Ch (Y key)      -> emit 79h 'y'
     dw 157Ah ; match sc 15h (Z key)      -> emit 7Ah 'z'
     dw 295Eh ; match sc 29h (^ key)      -> emit 5Eh '^'
-    dw 0CE1h ; match sc 0Ch (SZ key)     -> emit E1h 'á'
+    dw 0CE1h ; match sc 0Ch (SZ key)     -> emit E1h 'ÃŸ'
     dw 0D27h ; match sc 0Dh (accent key) -> emit 27h '''
     dw 2B23h ; match sc 2Bh (# key)      -> emit 23h '#'
     dw 1B2Bh ; match sc 1Bh (+ key)      -> emit 2Bh '+'
@@ -49,14 +49,14 @@ scan_map_state_shift LABEL WORD
     ; aus state_no_modifier. Zusammen mit dem Caps-Lock-Offset ergibt das die Umkehrlogik
     ; fuer Shift+Caps bei Y/Z/Umlauten.
 
-    dw 288Eh ; match sc 28h (AE key)     -> emit 8Eh 'Ž'
-    dw 2799h ; match sc 27h (OE key)     -> emit 99h '™'
-    dw 1A9Ah ; match sc 1Ah (UE key)     -> emit 9Ah 'š'
+    dw 288Eh ; match sc 28h (AE key)     -> emit 8Eh 'Ã„'
+    dw 2799h ; match sc 27h (OE key)     -> emit 99h 'Ã–'
+    dw 1A9Ah ; match sc 1Ah (UE key)     -> emit 9Ah 'Ãœ'
     dw 2C59h ; match sc 2Ch (Y key)      -> emit 59h 'Y'
     dw 155Ah ; match sc 15h (Z key)      -> emit 5Ah 'Z'
-    dw 29F8h ; match sc 29h (^ key)      -> emit F8h 'ø'
+    dw 29F8h ; match sc 29h (^ key)      -> emit F8h 'Â°'
     dw 0322h ; match sc 03h (2 key)      -> emit 22h '"'
-    dw 0415h ; match sc 04h (3 key)      -> emit 15h 'õ'
+    dw 0415h ; match sc 04h (3 key)      -> emit 15h 'Â§'
     dw 0726h ; match sc 07h (6 key)      -> emit 26h '&'
     dw 082Fh ; match sc 08h (7 key)      -> emit 2Fh '/'
     dw 0928h ; match sc 09h (8 key)      -> emit 28h '('
@@ -70,9 +70,9 @@ scan_map_state_shift LABEL WORD
     dw 343Ah ; match sc 34h (. key)      -> emit 3Ah ':'
     dw 355Fh ; match sc 35h (- key)      -> emit 5Fh '_'
     dw 563Eh ; match sc 56h (<> key)     -> emit 3Eh '>'
-    dw 2884h ; match sc 28h (AE key)     -> emit 84h '„'
-    dw 2794h ; match sc 27h (OE key)     -> emit 94h '”'
-    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h ''
+    dw 2884h ; match sc 28h (AE key)     -> emit 84h 'Ã¤'
+    dw 2794h ; match sc 27h (OE key)     -> emit 94h 'Ã¶'
+    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'Ã¼'
     dw 2C79h ; match sc 2Ch (Y key)      -> emit 79h 'y'
     dw 157Ah ; match sc 15h (Z key)      -> emit 7Ah 'z'
 
@@ -93,29 +93,29 @@ scan_map_state_ctrl_shift LABEL WORD
     ; dw 2C19h ; match sc 2Ch (Y key)  -> emit 19h '^Y'
     ; dw 151Ah ; match sc 15h (Z key)  -> emit 1Ah '^Z'
     ; dw 1E61h ; match sc 1Eh (A key)  -> emit 61h 'a'
-    ; dw 30E1h ; match sc 30h (B key)  -> emit E1h 'á'
+    ; dw 30E1h ; match sc 30h (B key)  -> emit E1h 'ÃŸ'
     ; dw 2E72h ; match sc 2Eh (C key)  -> emit 72h 'r'
     ; dw 2247h ; match sc 22h (G key)  -> emit 47h 'G'
-    ; dw 20EBh ; match sc 20h (D key)  -> emit EBh '‰'
-    ; dw 19E3h ; match sc 19h (P key)  -> emit E3h 'Æ'
+    ; dw 20EBh ; match sc 20h (D key)  -> emit EBh 'Ã«'
+    ; dw 19E3h ; match sc 19h (P key)  -> emit E3h 'Ã£'
     ; dw 1F73h ; match sc 1Fh (S key)  -> emit 73h 's'
-    ; dw 32E6h ; match sc 32h (M key)  -> emit E6h 'æ'
-    ; dw 18EAh ; match sc 18h (O key)  -> emit EAh 'ˆ'
-    ; dw 21EDh ; match sc 21h (F key)  -> emit EDh 'í'
+    ; dw 32E6h ; match sc 32h (M key)  -> emit E6h 'Âµ'
+    ; dw 18EAh ; match sc 18h (O key)  -> emit EAh 'Ãª'
+    ; dw 21EDh ; match sc 21h (F key)  -> emit EDh 'Ã'
     ; dw 1245h ; match sc 12h (E key)  -> emit 45h 'E'
     ; dw 1430h ; match sc 14h (T key)  -> emit 30h '0'
-    ; dw 10FBh ; match sc 10h (Q key)  -> emit FBh 'û'
+    ; dw 10FBh ; match sc 10h (Q key)  -> emit FBh 'Â¹'
 
 scan_map_state_alt_ctrl LABEL WORD
     ; Entspricht AltGr-Ebene (XT: Ctrl+Alt)
 
-    dw 1EA0h ; match sc 1Eh (A key)  -> emit A0h ' '
-    dw 1282h ; match sc 12h (E key)  -> emit 82h '‚'
-    dw 17A1h ; match sc 17h (I key)  -> emit A1h '¡'
-    dw 18A2h ; match sc 18h (O key)  -> emit A2h '¢'
-    dw 16A3h ; match sc 16h (U key)  -> emit A3h '£'
-    dw 03FDh ; match sc 03h (2 key)  -> emit FDh 'ý'
-    dw 04FCh ; match sc 04h (3 key)  -> emit FCh 'ü'
+    dw 1EA0h ; match sc 1Eh (A key)  -> emit A0h 'Ã¡'
+    dw 1282h ; match sc 12h (E key)  -> emit 82h 'Ã©'
+    dw 17A1h ; match sc 17h (I key)  -> emit A1h 'Ã­'
+    dw 18A2h ; match sc 18h (O key)  -> emit A2h 'Ã³'
+    dw 16A3h ; match sc 16h (U key)  -> emit A3h 'Ãº'
+    dw 03FDh ; match sc 03h (2 key)  -> emit FDh 'Â²'
+    dw 04FCh ; match sc 04h (3 key)  -> emit FCh 'Â³'
     dw 1040h ; match sc 10h (Q key)  -> emit 40h '@'
     dw 087Bh ; match sc 08h (7 key)  -> emit 7Bh '{'
     dw 095Bh ; match sc 09h (8 key)  -> emit 5Bh '['
@@ -124,23 +124,23 @@ scan_map_state_alt_ctrl LABEL WORD
     dw 0C5Ch ; match sc 0Ch (SZ key) -> emit 5Ch '\'
     dw 1B7Eh ; match sc 1Bh (+ key)  -> emit 7Eh '~'
     dw 567Ch ; match sc 56h (<> key) -> emit 7Ch '|'
-    dw 32E6h ; match sc 32h (M key)  -> emit E6h 'æ'
+    dw 32E6h ; match sc 32h (M key)  -> emit E6h 'Âµ'
 
 scan_map_state_alt_shift LABEL WORD
-    dw 1E85h ; match sc 1Eh (A key)  -> emit 85h '…'
-    dw 128Ah ; match sc 12h (E key)  -> emit 8Ah 'Š'
-    dw 178Dh ; match sc 17h (I key)  -> emit 8Dh ''
-    dw 1895h ; match sc 18h (O key)  -> emit 95h '•'
-    dw 1697h ; match sc 16h (U key)  -> emit 97h '—'
-    ; dw 03F9h ; match sc 03h (2 key)  -> emit F9h 'ù'
-    ; dw 05F9h ; match sc 05h (4 key)  -> emit F9h 'ù'
+    dw 1E85h ; match sc 1Eh (A key)  -> emit 85h 'Ã '
+    dw 128Ah ; match sc 12h (E key)  -> emit 8Ah 'Ã¨'
+    dw 178Dh ; match sc 17h (I key)  -> emit 8Dh 'Ã¬'
+    dw 1895h ; match sc 18h (O key)  -> emit 95h 'Ã²'
+    dw 1697h ; match sc 16h (U key)  -> emit 97h 'Ã¹'
+    ; dw 03F9h ; match sc 03h (2 key)  -> emit F9h 'Â¨'
+    ; dw 05F9h ; match sc 05h (4 key)  -> emit F9h 'Â¨'
 
 scan_map_state_alt_ctrl_shift LABEL WORD
-    dw 1E83h ; match sc 1Eh (A key)  -> emit 83h 'ƒ'
-    dw 1288h ; match sc 12h (E key)  -> emit 88h 'ˆ'
-    dw 178Ch ; match sc 17h (I key)  -> emit 8Ch 'Œ'
-    dw 1893h ; match sc 18h (O key)  -> emit 93h '“'
-    dw 1696h ; match sc 16h (U key)  -> emit 96h '–'
+    dw 1E83h ; match sc 1Eh (A key)  -> emit 83h 'Ã¢'
+    dw 1288h ; match sc 12h (E key)  -> emit 88h 'Ãª'
+    dw 178Ch ; match sc 17h (I key)  -> emit 8Ch 'Ã®'
+    dw 1893h ; match sc 18h (O key)  -> emit 93h 'Ã´'
+    dw 1696h ; match sc 16h (U key)  -> emit 96h 'Ã»'
 
 special_scan_map_prefix LABEL WORD
     ; Sondertabelle fuer Prefix-/Extended-Faelle
@@ -167,7 +167,7 @@ state_table_count LABEL BYTE
     db 03h ; scan_map_state_ctrl
     db 00h ; scan_map_state_ctrl_shift, von 0Fh auf 00h, alles auskommentiert
     db 00h ; scan_map_state_alt, von 01h auf 00h, auskommentiert
-    db 05h ; scan_map_state_alt_shift, von 07h auf 05h, 2 komische eintr„ge auskommentiert
+    db 05h ; scan_map_state_alt_shift, von 07h auf 05h, 2 komische eintrÃ¤ge auskommentiert
     db 10h ; scan_map_state_alt_ctrl
     db 05h ; scan_map_state_alt_ctrl_shift
 

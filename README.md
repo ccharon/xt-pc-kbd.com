@@ -6,6 +6,8 @@ Die Rekonstruktion basiert auf der ursprünglichen `Kbd.com` von **helmrohr.de**
 
 https://web.archive.org/web/20141104155836/http://www.helmrohr.de/MsDos.htm
 
+Ausserdem gibt es noch die Variante `KBDN.COM` ([KBDN.ASM](https://github.com/ccharon/xt-pc-kbd.com/blob/main/KBDN.ASM) das ist, wenn man das so nennen will, eine bereinigte Version. Dort sind die [exotischeren Mappings](https://github.com/ccharon/xt-pc-kbd.com/blob/main/KBD.ASM#L89-L107) deaktiviert. Diese Version meldet sich als v4.02.
+
 ## Hintergrund
 
 `KBD.COM` ist ein kompakter deutscher Tastaturtreiber für DOS, der laut originaler Dokumentation auch unter Windows in DOS-Fenstern eingesetzt werden kann. Gegenüber `KEYB.COM` benötigt er nur etwa 1 KB Speicher.

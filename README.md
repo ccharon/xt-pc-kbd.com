@@ -18,11 +18,11 @@ Wird der Quelltext mit **TASM 2.0** assembliert und mit **TLINK** als `.COM` gel
 
 Zum Bauen wird eine echte oder emulierte **MS-DOS Umgebung** benötigt (z. B. DOSBox).
 
-## Auschecken
+### Auschecken
 
 Achtung bitte mit einem ordentlichen GIT Client ausschecken, die Dateien im Repo sind UTF8 mit LF weil github sonst traurig ist. Per .gitattributes wird beim Auschecken KBD.ASM und MAKEFILE automatisch auf CP850 CRLF konvertiert.
 
-Benötigte Tools:
+### Benötigte Tools:
 
 * Turbo Assembler **TASM 2.0**
 * Turbo Linker (TLINK)

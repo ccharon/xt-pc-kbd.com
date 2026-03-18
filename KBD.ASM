@@ -32,10 +32,6 @@ start:
 ; -----------------------------------------------------------------------------
 
 scan_map_state_no_modifier LABEL WORD
-    ; Bei aktivem Caps Lock und ohne Ctrl/Alt wird der Tabellenstart spaeter
-    ; um 5 Worte verschoben; die ersten 5 Eintraege sind also der "caps-empfindliche"
-    ; Bereich fuer Umlaute und Y/Z.
-
     dw 2884h ; match sc 28h (AE key)     -> emit 84h 'ä'
     dw 2794h ; match sc 27h (OE key)     -> emit 94h 'ö'
     dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'ü'

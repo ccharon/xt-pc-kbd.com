@@ -51,7 +51,7 @@ scan_map_state_no_modifier LABEL WORD
 
 scan_map_state_shift LABEL WORD
     ; Die letzten 5 Eintraege sind absichtlich die Kleinbuchstaben-/Umlautwerte
-    ; aus state 0. Zusammen mit dem Caps-Lock-Offset ergibt das die Umkehrlogik
+    ; aus state_no_modifier. Zusammen mit dem Caps-Lock-Offset ergibt das die Umkehrlogik
     ; fuer Shift+Caps bei Y/Z/Umlauten.
 
     dw 288Eh ; match sc 28h (AE key)     -> emit 8Eh 'Ä'
@@ -75,21 +75,20 @@ scan_map_state_shift LABEL WORD
     dw 343Ah ; match sc 34h (. key)      -> emit 3Ah ':'
     dw 355Fh ; match sc 35h (- key)      -> emit 5Fh '_'
     dw 563Eh ; match sc 56h (<> key)     -> emit 3Eh '>'
-    dw 2884h ; match sc 28h (AE key)     -> emit 84h 'ä' ; Caps+Shift-Rueckfall
-    dw 2794h ; match sc 27h (OE key)     -> emit 94h 'ö' ; Caps+Shift-Rueckfall
-    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'ü' ; Caps+Shift-Rueckfall
-    dw 2C79h ; match sc 2Ch (Y key)      -> emit 79h 'y' ; Caps+Shift-Rueckfall
-    dw 157Ah ; match sc 15h (Z key)      -> emit 7Ah 'z' ; Caps+Shift-Rueckfall
+    ; Caps+Shift-Rueckfall
+    dw 2884h ; match sc 28h (AE key)     -> emit 84h 'ä'
+    dw 2794h ; match sc 27h (OE key)     -> emit 94h 'ö'
+    dw 1A81h ; match sc 1Ah (UE key)     -> emit 81h 'ü'
+    dw 2C79h ; match sc 2Ch (Y key)      -> emit 79h 'y'
+    dw 157Ah ; match sc 15h (Z key)      -> emit 7Ah 'z'
 
 scan_map_state_ctrl LABEL WORD
     dw 2C19h ; match sc 2Ch (Y key)  -> emit 19h '^Y'
     dw 151Ah ; match sc 15h (Z key)  -> emit 1Ah '^Z'
     dw 351Fh ; match sc 35h (- key)  -> emit 1Fh '^_'
 
-
 scan_map_state_alt LABEL WORD
     dw 082Bh ; match sc 08h (7 key)  -> emit 2Bh '+'
-
 
 scan_map_state_ctrl_shift LABEL WORD
     ; Diese Ebene emittiert direkt feste Bytes ohne klassisches Ctrl-Schema.
@@ -111,7 +110,6 @@ scan_map_state_ctrl_shift LABEL WORD
     dw 1430h ; match sc 14h (T key)  -> emit 30h '0'
     dw 10FBh ; match sc 10h (Q key)  -> emit FBh '¹'
 
-
 scan_map_state_alt_ctrl LABEL WORD
     ; Entspricht AltGr-Ebene (XT: Ctrl+Alt)
 
@@ -132,7 +130,6 @@ scan_map_state_alt_ctrl LABEL WORD
     dw 567Ch ; match sc 56h (<> key) -> emit 7Ch '|'
     dw 32E6h ; match sc 32h (M key)  -> emit E6h 'µ'
 
-
 scan_map_state_alt_shift LABEL WORD
     dw 1E85h ; match sc 1Eh (A key)  -> emit 85h 'à'
     dw 128Ah ; match sc 12h (E key)  -> emit 8Ah 'è'
@@ -141,7 +138,6 @@ scan_map_state_alt_shift LABEL WORD
     dw 1697h ; match sc 16h (U key)  -> emit 97h 'ù'
     dw 03F9h ; match sc 03h (2 key)  -> emit F9h '¨'
     dw 05F9h ; match sc 05h (4 key)  -> emit F9h '¨'
-
 
 scan_map_state_alt_ctrl_shift LABEL WORD
     dw 1E83h ; match sc 1Eh (A key)  -> emit 83h 'â'
